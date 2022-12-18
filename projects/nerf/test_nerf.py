@@ -160,7 +160,7 @@ def main(cfg: DictConfig):
         ffmpeg_bin = "ffmpeg"
         frame_regexp = os.path.join(export_dir, "frame_%05d.png")
         ffmcmd = (
-            "%s -r %d -i %s -vcodec h264 -f mp4 -y -b 2000k -pix_fmt yuv420p %s"
+            "%s -framerate %d -i %s -b:v 2000k %s"
             % (ffmpeg_bin, cfg.test.fps, frame_regexp, video_path)
         )
         ret = os.system(ffmcmd)
